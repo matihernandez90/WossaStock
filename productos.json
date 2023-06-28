@@ -1,0 +1,98 @@
+[
+    {
+        "codigo": 111,
+        "descripcion": "CAMPERA PLUSH",
+        "precio_minorista": 3400,
+        "precio_mayorista": 3200,
+        "cantidad": 50,
+        "tipo_precio": ""
+    },
+    {
+        "codigo": 113,
+        "descripcion": "REMERA CUELLO BOTE",
+        "precio_minorista": 1450,
+        "precio_mayorista": 1250,
+        "cantidad": 100,
+        "tipo_precio": ""
+    },
+    {
+        "codigo": 114,
+        "descripcion": "CAMISETA MEGAN",
+        "precio_minorista": 2050,
+        "precio_mayorista": 1850,
+        "cantidad": 40,
+        "tipo_precio": ""
+    },
+    {
+        "codigo": 115,
+        "descripcion": "CAMISETA EMILY",
+        "precio_minorista": 2050,
+        "precio_mayorista": 1850,
+        "cantidad": 40,
+        "tipo_precio": ""
+    },
+    {
+        "codigo": 116,
+        "descripcion": "CAMISETA REBECCA",
+        "precio_minorista": 2050,
+        "precio_mayorista": 1850,
+        "cantidad": 40,
+        "tipo_precio": ""
+    },
+    {
+        "codigo": 117,
+        "descripcion": "CAMISETA KAYLA",
+        "precio_minorista": 2050,
+        "precio_mayorista": 1850,
+        "cantidad": 40,
+        "tipo_precio": ""
+    },
+    {
+        "codigo": 118,
+        "descripcion": "POLERA MODAL SOFT",
+        "precio_minorista": 1900,
+        "precio_mayorista": 1700,
+        "cantidad": 40,
+        "tipo_precio": ""
+    },
+    {
+        "codigo": 119,
+        "descripcion": "CAMISETA ISADORA",
+        "precio_minorista": 2050,
+        "precio_mayorista": 1850,
+        "cantidad": 40,
+        "tipo_precio": ""
+    },
+    {
+        "codigo": 120,
+        "descripcion": "CAMISETA ESPEJO",
+        "precio_minorista": 2050,
+        "precio_mayorista": 1850,
+        "cantidad": 40,
+        "tipo_precio": ""
+    },
+    {
+        "codigo": 121,
+        "descripcion": "CAMISETA CHARLOTTE",
+        "precio_minorista": 2050,
+        "precio_mayorista": 1850,
+        "cantidad": 40,
+        "tipo_precio": ""
+    },
+    {
+        "codigo": 122,
+        "descripcion": "CAMISETA BECKY",
+        "precio_minorista": 2050,
+        "precio_mayorista": 1850,
+        "cantidad": 40,
+        "tipo_precio": ""
+    },
+    {
+        "codigo": 123,
+        "descripcion": "CAMISETA V GANCHO",
+        "precio_minorista": 2050,
+        "precio_mayorista": 1850,
+        "cantidad": 40,
+        "tipo_precio": ""
+    }
+]

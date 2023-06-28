@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Venta</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        table td, th{
+            padding-right: 20px;
+            color: #ffff}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+<div class="container ventas">
+    <div>
+        <h1>Venta</h1>
+        <form method="POST" action="{{ url_for('venta') }}">
+            <div class="form-group">
+                <label for="descripcion">Descripción:</label>
+                <select class="form-control" id="descripcion" name="descripcion">
+                    {% for descripcion in descripciones_productos %}
+                    <option>{{ descripcion }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <label for="cantidad">Cantidad:</label>
+            <input type="number" name="cantidad" id="cantidad" required><br>
+
+            <select name="tipo_precio" id="tipo_precio" required>
+                <option value="Minorista">Minorista</option>
+                <option value="Mayorista">Mayorista</option>
+            </select><br>
+            <select name="tipo_pago" id="tipo_pago" required>
+                <option value="Efectivo">EFECTIVO</option>
+                <option value="Transf">TRANSF</option>
+            </select><br>
+
+            <input type="submit" value="Agregar al carrito">
+            <br>
+            <br>
+
+
+        </form>
+
+        <form method="POST" action="{{ url_for('limpiar_carrito') }}">
+            <button type="submit">Limpiar carrito</button>
+        </form>
+
+        <a href="/">
+            <button>Volver</button>
+        </a>
+    </div>
+
+    <div>
+        <h2>Carrito</h2>
+        <table>
+
+            <tr>
+                <th>ART</th>
+                <th>CANT</th>
+                <th>SUBT</th>
+                <th>PAGO</th>
+            </tr>
+            {% for item in carrito %}
+            {% set producto = productos[item['codigo']] %}
+            <tr>
+
+                <td>{{ item['descripcion'] }}</td>
+                <td>{{ item['cantidad'] }}</td>
+                <td>{{ item['subtotal'] }}</td>
+                <td>{{ item['tipo_pago'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <p class="total" style="font-size: xx-large"><strong>TOTAL: {{ total_venta_carrito }}</strong></p>
+
+        <form action="{{ url_for('aplicar_embalaje') }}" method="post">
+            <input type="submit" value="Aplicar embalaje">
+        </form>
+        <br>
+        <form method="POST" action="{{ url_for('imprimir_ticket') }}" target="_blank">
+            <button type="submit">Imprimir ticket</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
+

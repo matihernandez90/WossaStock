@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Inventario</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        td {
+            color: #e91e63;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        table th {
+            background-color: #e91e63;
+            color: #fff;
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        table td {
+            padding: 10px;
+            }
+
+
+
+
+    </style>
+</head>
+<body>
+<div class="container inventario">
+    <h1>Inventario</h1>
+    <a href="/">
+        <button>Volver</button>
+    </a>
+    <table>
+        <tr>
+            <th>Código</th>
+            <th>Descripción</th>
+            <th>PrecioMinorista</th>
+            <th>PrecioMayorista</th>
+            <th>Cantidad</th>
+
+        </tr>
+        {% for producto in productos %}
+        <tr>
+            <td>{{ producto.codigo }}</td>
+            <td>{{ producto.descripcion }}</td>
+            <td>{{ producto.precio_minorista }}</td>
+            <td>{{ producto.precio_mayorista }}</td>
+            <td>{{ producto.cantidad }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/">
+        <button>Volver</button>
+    </a>
+
+</div>
+</body>
+</html>

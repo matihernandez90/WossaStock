@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Venta</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container agregar_producto">
+    <form method="POST" action="{{ url_for('agregar_producto') }}">
+        <h2>Agregar Producto</h2>
+        <label for="codigo">Código:</label>
+        <input type="text" name="codigo" id="codigo" required><br>
+
+        <label for="descripcion">Descripción:</label>
+        <input type="text" name="descripcion" id="descripcion" required><br>
+
+        <label for="precio_minorista">Precio Minorista:</label>
+        <input type="text" name="precio_minorista" id="precio_minorista" required><br>
+
+        <label for="precio_mayorista">Precio Mayorista:</label>
+        <input type="text" name="precio_mayorista" id="precio_mayorista" required><br>
+
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" name="cantidad" id="cantidad" required><br>
+
+        <input type="submit" value="Agregar Producto">
+    </form>
+    <a href="/">
+        <button>Volver</button>
+    </a>
+</div>
+
+</body>
+</html>

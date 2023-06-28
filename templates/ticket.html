@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Ticket de Venta</title>
+    <style>
+        /* Estilos CSS para el ticket */
+        body {
+            height: 100px;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            margin: 0;
+            padding: 0
+        }
+
+        .ticket {
+            width: 550px;
+            margin: 0px;
+            padding: 0px;
+            justify-content: center;
+            align-items:center;
+        }
+
+        .ticket strong {
+            font-weight: bold;
+        }
+
+        .ticket p {
+            margin: 0;
+        }
+
+        .ticket .total {
+            margin-top: 10px;
+            text-align: right;
+        }
+        .encabezado{
+            width: 100%
+        }
+        table{
+            width: 100%;
+            border: none
+        }
+        td{
+            border: 1px solid;
+        }
+
+        table td {
+            padding-right: 20px;
+        }
+        .imprimir-btn {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+
+
+
+
+
+
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        function ocultarBotones() {
+            var btnImpresion = document.getElementById('btn-imprimir');
+            var btnDescargar = document.getElementById('btn-descargar');
+            btnImpresion.style.display = 'none';
+            btnDescargar.style.display = 'none';
+        }
+
+        function mostrarBotones() {
+            var btnImpresion = document.getElementById('btn-imprimir');
+            var btnDescargar = document.getElementById('btn-descargar');
+            btnImpresion.style.display = 'block';
+            btnDescargar.style.display = 'block';
+        }
+
+        function downloadImage() {
+            ocultarBotones();
+
+            // Obtener el elemento que representa el ticket
+            const ticketElement = document.querySelector('.ticket');
+
+            // Obtener la altura total del contenido
+            const ticketHeight = ticketElement.offsetHeight;
+
+            // Crear un elemento de lienzo (canvas)
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+
+            // Establecer el tamaño del lienzo al tamaño del ticket
+            canvas.width = ticketElement.offsetWidth;
+            canvas.height = ticketHeight;
+
+            // Dibujar el ticket en el lienzo
+            html2canvas(ticketElement).then(function(canvas) {
+                // Crear un enlace de descarga
+                const link = document.createElement('a');
+                link.download = 'ticket.webp';
+
+                // Convertir el lienzo a una URL de datos (data URL)
+                link.href = canvas.toDataURL('image/webp');
+
+                // Hacer clic en el enlace para iniciar la descarga
+                link.click();
+
+                mostrarBotones();
+            });
+        }
+
+        // Asignar la función `downloadImage` al ámbito global
+        window.downloadImage = downloadImage;
+
+        // Función para imprimir el ticket
+        function imprimirTicket() {
+            ocultarBotones();
+            setTimeout(function() {
+                window.print();
+                mostrarBotones();
+            }, 100);
+        }
+
+        // Asignar la función `imprimirTicket` al botón de impresión
+        var btnImpresion = document.getElementById('btn-imprimir');
+        btnImpresion.addEventListener('click', imprimirTicket);
+
+    });
+
+
+
+
+
+    </script>
+</head>
+<body>
+<button id="btn-imprimir" class="imprimir-btn" style="font-size: 30px">Imprimir</button>
+<!-- Botón para descargar imagen -->
+<button id="btn-descargar" onclick="downloadImage()">Descargar Imagen</button>
+<div class="ticket">
+    <div>
+        <img class="encabezado" src="/static/ticket-wossa-2.jpg" alt="encabezado">
+    </div>
+    <table>
+        <tr style="font-size: xx-large">
+            <th>ART</th>
+            <th>CANT</th>
+            <th>SUBT</th>
+            <th>PAGO</th>
+        </tr>
+
+        {% for venta in ventas %}
+        <tr style="font-size: x-large">
+            <td><strong>{{ venta['descripcion'] }}</strong></td>
+            <td><strong>{{ venta['cantidad'] }}</strong></td>
+            <td><strong>{{ venta['subtotal'] }}</strong></td>
+            <td><strong>{{ venta['tipo_pago'] }}</strong></td>
+            a
+        </tr>
+        {% endfor %}
+    </table>
+    {% if embalaje_agregado %}
+    <p class="total" style="font-size: xx-large"><strong>EMBALAJE +$700</strong></p>
+    {% endif %}
+    <p class="total" style="font-size: xxx-large"><strong>TOTAL: {{ total_venta }}</strong></p>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<strong><p style="font-size: xxx-large">----------------------------------</p></strong>
+<br>
+<strong><p style="font-size: xxx-large">GRACIAS POR SU COMPRA!!</p></strong>
+<strong><p style="font-size: x-large">Cambios y devoluciones solo con este ticket</p></strong>
+<br>
+<strong><p style="font-size: xxx-large">----------------------------------</p></strong>
+<strong><p style="font-size: xx-large">{{ now.strftime("%Y-%m-%d %H:%M:%S") }}</p></strong>
+<br>
+<strong><p style="font-size: xxx-large">----------------------------------</p></strong>
+</body>
+</html>
